@@ -60,3 +60,4 @@ const start = async () => {
     }
 };
 start();
+console.log("Up and running with auto git commit updates on discloud");
