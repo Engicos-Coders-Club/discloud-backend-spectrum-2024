@@ -23,9 +23,9 @@ config(); // for dotenv
 app.use(express.json({ limit: '50mb' }));
 app.set('trust proxy', 1);
 app.use(rateLimit({
-    windowMs: 5 * 60 * 1000,
-    max: 1000,
-    standardHeaders: true,
+    windowMs: 5 * 60 * 1000, // 5 minutes
+    max: 1000, // limit each IP to 1000 requests per window
+    standardHeaders: true, // Return rate limit info in the RateLimit-* headers
     legacyHeaders: false, // Disable the X-RateLimit-* headers
 }));
 app.use(helmet());

@@ -8,7 +8,7 @@ const razorpay = new Razorpay({
 });
 export const createPayment = async (amount) => {
     const options = {
-        amount: amount,
+        amount: amount, // amount in the smallest currency unit
         currency: "INR",
         receipt: "order_rcptid_11"
     };
