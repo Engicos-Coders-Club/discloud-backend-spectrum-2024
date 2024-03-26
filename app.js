@@ -48,7 +48,7 @@ cloudinary.v2.config({
     api_key: process.env.CLOUDINARY_KEY,
     api_secret: process.env.CLOUDINARY_SECRET,
 });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI || 'default-uri');
