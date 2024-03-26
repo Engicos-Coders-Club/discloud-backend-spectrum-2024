@@ -132,8 +132,6 @@ export const initializeTeam = async (req, res) => {
     const files = req.files;
     const payment_screenshot = files['payment'][0];
     const idcard = files['idcard'][0];
-    // const files = req.files as Express.Multer.File[];
-    console.log(payment_screenshot, idcard);
     // Check if payment and idcard files are uploaded
     if (!payment_screenshot || !idcard)
         throw new BadRequestError("Both 'payment' and 'idcard' files are required");
@@ -153,6 +151,7 @@ export const initializeTeam = async (req, res) => {
         await Participants.create({ email: leader, name: leaderName, idcard: idCardResult.secure_url, contact: leaderContact, college: leaderCollege });
     }
     await Participants.findOneAndUpdate({ email: leader }, { $push: { events: team.eventId, teams: team._id } });
+    await Team.findOneAndUpdate({ _id: team._id }, { $push: { participants: leader } });
     // Send OTP to leader
     const data = participantRegisteredTemplate(event.eventName, teamName);
     const adminData = teamRegistrationAdminUpdateTemplate(event.eventName, teamName);
