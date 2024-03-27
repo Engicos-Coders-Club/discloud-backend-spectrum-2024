@@ -29,7 +29,7 @@ const EventSchema = new Schema({
         min: { type: Number, required: true },
         max: { type: Number, required: true }
     },
-    participationLimit: { type: Number, default: -1 }, // -1 implies no limit
+    participationLimit: { type: Number, default: -1 },
     contact: {
         coordinators: { type: [CoordinatorSchema], required: true }
     },
