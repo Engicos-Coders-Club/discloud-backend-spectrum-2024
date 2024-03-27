@@ -48,7 +48,7 @@ export const getDepartmentEvents = async (req, res) => {
     });
     res.status(StatusCodes.OK).json({ "events": ls });
 };
-export const getAllEvents = async (req, res) => {
+export const getAllEventsFunc = async () => {
     const ls = [];
     const events = await Event.find({});
     events.forEach((item) => {
@@ -61,6 +61,10 @@ export const getAllEvents = async (req, res) => {
             'imageUrl': item.imageURL
         });
     });
+    return ls;
+};
+export const getAllEvents = async (req, res) => {
+    const ls = await getAllEventsFunc();
     res.status(StatusCodes.OK).json({ "events": ls });
 };
 export const addImage = async (req, res) => {
